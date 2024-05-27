@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+const int x = 10;
+
+double avg(int Score[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += Score[i];
+    }
+    return (sum) / size;
+}
+
+int  Highest(int Score[], int size) {
+    int highest =  Score[0];
+    for (int i = 1; i < size; ++i) {
+        if ( Score[i] > highest) {
+            highest = Score[i];
+        }
+    }
+    return highest;
+}
+
+int  Lowest(int Score[], int size) {
+    int lowest = Score[0];
+    for (int i = 1; i < size; ++i) {
+        if (Score[i] < lowest) {
+            lowest = Score[i];
+        }
+    }
+    return lowest;
+}
+
+int aboveavg(int Score[], int size, double avg) {
+    int count = 0;
+    for (int i = 0; i < size; ++i) {
+        if (Score[i] > avg) {
+            ++count;
+        }
+    }
+    return count;
+}
+
+int lowavg(int Score[], int size, double avg) {
+    int count = 0;
+    for (int i = 0; i < size; ++i) {
+        if (Score[i] < avg) {
+            ++count;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int Score[x];
+
+    cout << "Enter 10 exam scores:\n";
+    for (int i = 0; i < x; ++i) {
+        cout << "Score " << i + 1 << ": ";
+        cin >> Score[i];
+    }
+
+    double average = avg(Score, x);
+    int highest = Highest(Score, x);
+    int lowest = Lowest(Score, x);
+    int aboveavg = aboveAvg(Score,x, avg);
+    int belowavg = lowAvg(Score,x, avg);
+
+    cout << "Average exam score: " << average << endl;
+    cout << "Highest exam score: " << highest << endl;
+    cout << "Lowest exam score: " << lowest << endl;
+    cout << "Number of exam scores above the average: " << aboveavg << endl;
+    cout << "Number of exam scores below the average: " << belowavg << endl;
+
+    return 0;
+}
